@@ -17,9 +17,11 @@
 function tireNombre(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
+let min = 1;
+let max = 100;
 
-let nbEssais = 1;
-let nbMystere = tireNombre(1, 100);
+let nbEssais = 0;
+let nbMystere = tireNombre(min, max);
 console.log(nbMystere);
 let reponse = '';
 let message = 'Entrez un nombre entre 1 et 100';
@@ -35,14 +37,9 @@ do {
     else if (reponse < nbMystere) {
         alert('C est plus');
     }
-    //Sinon si le nombre entré = au nombre mystère alors affiche à l'utilisateur qu'il a trouvé
-    // et en combien d'essais
-    else {
-        alert('Vous avez trouvé après ' + nbEssais + ' essais');
-    }
-
     //Incrémente le nombre d'essais
     nbEssais++;
 } while (nbMystere !== reponse);
 
+alert(`Vous avez trouvé le nombre mystère après ${nbEssais} essais`);
 
