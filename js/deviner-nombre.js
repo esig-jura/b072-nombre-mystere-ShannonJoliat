@@ -21,11 +21,12 @@ function tireNombre(min, max) {
 let nbEssais = 1;
 let nbMystere = tireNombre(1, 100);
 console.log(nbMystere);
-let reponse = "";
+let reponse = '';
+let message = 'Entrez un nombre entre 1 et 100';
 
 do {
     //Récupère le nombre entré par l'utilisateur
-    reponse = Number(prompt('Entrez un nombre entre 1 et 100'));
+    reponse = Number(prompt(message));
     //Si le nombre entré est > que le nombre mystère alors affiche 'C'est moins'
     if (reponse > nbMystere) {
         alert('C est moins');
