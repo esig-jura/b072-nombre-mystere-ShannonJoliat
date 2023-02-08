@@ -1,14 +1,47 @@
 /**
  * Jeu du nombre mystère
- * @author  Steve Fallet
+ * @author  Shannon Joliat
  * @version 1.0
- * @since   2022-08-30 (date de création)
+ * @since   2023-02-08 (date de création)
  */
 
-//Main IIFE (Immediately-Invoked Function Expression, se prononce "iffy")
-(function main() {
-    'use strict';
+'use strict';
+// TODO afficher les messages d'erreur en HTML et pas avec alert
+// TODO panneau de config pour modifer MIN et MAX
+/**
+ * Fonction qui retourne un nombre aléatoire compris entre min et max
+ * @param {number} min
+ * @param {number} max
+ * @returns {number}
+ */
+function tireNombre(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
 
-   // Ton code de malade ici ...
+let nbEssais = 1;
+let nbMystere = tireNombre(1, 100);
+console.log(nbMystere);
+let reponse = "";
 
-}()); //main IIFE
+do {
+    //Récupère le nombre entré par l'utilisateur
+    reponse = Number(prompt('Entrez un nombre entre 1 et 100'));
+    //Si le nombre entré est > que le nombre mystère alors affiche 'C'est moins'
+    if (reponse > nbMystere) {
+        alert('C est moins');
+    }
+    //Sinon si le nombre entré est < que le nombre mystère alors affiche 'C'est plus'
+    else if (reponse < nbMystere) {
+        alert('C est plus');
+    }
+    //Sinon si le nombre entré = au nombre mystère alors affiche à l'utilisateur qu'il a trouvé
+    // et en combien d'essais
+    else {
+        alert('Vous avez trouvé après ' + nbEssais + ' essais');
+    }
+
+    //Incrémente le nombre d'essais
+    nbEssais++;
+} while (nbMystere !== reponse);
+
+
